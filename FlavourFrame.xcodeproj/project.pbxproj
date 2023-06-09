@@ -11,6 +11,10 @@
 		145000472A327942006CB348 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145000462A327942006CB348 /* ContentView.swift */; };
 		145000492A327943006CB348 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 145000482A327943006CB348 /* Assets.xcassets */; };
 		1450004C2A327943006CB348 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1450004B2A327943006CB348 /* Preview Assets.xcassets */; };
+		145000532A3279A5006CB348 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145000522A3279A5006CB348 /* CanvasView.swift */; };
+		145000552A327AE8006CB348 /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145000542A327AE8006CB348 /* DrawingView.swift */; };
+		145000572A328BA5006CB348 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145000562A328BA5006CB348 /* ModelData.swift */; };
+		145000592A32A02D006CB348 /* flavours.json in Resources */ = {isa = PBXBuildFile; fileRef = 145000582A32A02D006CB348 /* flavours.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +23,10 @@
 		145000462A327942006CB348 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		145000482A327943006CB348 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1450004B2A327943006CB348 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		145000522A3279A5006CB348 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
+		145000542A327AE8006CB348 /* DrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
+		145000562A328BA5006CB348 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
+		145000582A32A02D006CB348 /* flavours.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = flavours.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +59,12 @@
 		145000432A327942006CB348 /* FlavourFrame */ = {
 			isa = PBXGroup;
 			children = (
+				145000562A328BA5006CB348 /* ModelData.swift */,
 				145000442A327942006CB348 /* FlavourFrameApp.swift */,
 				145000462A327942006CB348 /* ContentView.swift */,
+				145000582A32A02D006CB348 /* flavours.json */,
+				145000542A327AE8006CB348 /* DrawingView.swift */,
+				145000522A3279A5006CB348 /* CanvasView.swift */,
 				145000482A327943006CB348 /* Assets.xcassets */,
 				1450004A2A327943006CB348 /* Preview Content */,
 			);
@@ -125,6 +137,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				145000592A32A02D006CB348 /* flavours.json in Resources */,
 				1450004C2A327943006CB348 /* Preview Assets.xcassets in Resources */,
 				145000492A327943006CB348 /* Assets.xcassets in Resources */,
 			);
@@ -139,6 +152,9 @@
 			files = (
 				145000472A327942006CB348 /* ContentView.swift in Sources */,
 				145000452A327942006CB348 /* FlavourFrameApp.swift in Sources */,
+				145000572A328BA5006CB348 /* ModelData.swift in Sources */,
+				145000532A3279A5006CB348 /* CanvasView.swift in Sources */,
+				145000552A327AE8006CB348 /* DrawingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
