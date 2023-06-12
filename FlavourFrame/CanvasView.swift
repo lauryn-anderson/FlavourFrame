@@ -10,12 +10,18 @@ import PencilKit
 
 struct CanvasView : UIViewRepresentable {
     @Binding var canvasView: PKCanvasView
+    let picker = PKToolPicker.init()
 
     func makeUIView(context: Context) -> PKCanvasView {
-        canvasView.drawingPolicy = .anyInput
-        canvasView.tool = PKInkingTool(.pen, color: .black, width: 15)
+//        canvasView.drawingPolicy = .anyInput
         return canvasView
     }
 
-    func updateUIView(_ canvasView: PKCanvasView, context: Context) { }
+    func updateUIView(_ uiView: PKCanvasView, context: Context) {
+        picker.addObserver(canvasView)
+        picker.setVisible(true, forFirstResponder: uiView)
+        DispatchQueue.main.async {
+            uiView.becomeFirstResponder()
+        }
+    }
 }

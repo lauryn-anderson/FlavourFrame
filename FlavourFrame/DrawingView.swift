@@ -9,7 +9,6 @@ import SwiftUI
 import PencilKit
 
 
-
 struct DrawingView: View {
     @State private var canvasView = PKCanvasView()
     @EnvironmentObject var store: FlavourStore
@@ -23,7 +22,6 @@ struct DrawingView: View {
     var body: some View {
         VStack {
             Text(flavour.name)
-//            TextField("Flavour", text: $flavour.name)
             CanvasView(canvasView: $canvasView)
         }
         .navigationTitle(flavour.name)
