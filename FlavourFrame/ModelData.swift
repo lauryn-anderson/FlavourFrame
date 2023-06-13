@@ -15,7 +15,7 @@ final class FlavourStore: ObservableObject {
 
 struct Flavour: Codable, Identifiable {
     var id = UUID()
-    var name = ""
+    var name = "New Flavour"
     var drawing: PKDrawing?
 }
 

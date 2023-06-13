@@ -21,7 +21,11 @@ struct DrawingView: View {
 
     var body: some View {
         VStack {
-            Text(flavour.name)
+            HStack {
+                Spacer()
+                TextField("Flavour", text: $store.flavours[flavourIndex].name)
+                Spacer()
+            }
             CanvasView(canvasView: $canvasView)
         }
         .navigationTitle(flavour.name)

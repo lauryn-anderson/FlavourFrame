@@ -18,5 +18,6 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
             .previewDevice("iPad (9th generation)")
             .environmentObject(FlavourStore())
+            .previewInterfaceOrientation(.landscapeLeft)
     }
 }

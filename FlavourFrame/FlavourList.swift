@@ -20,8 +20,16 @@ struct FlavourList: View {
                         FlavourRow(flavour: flavour)
                     }
                 }
+                .onDelete { store.flavours.remove(atOffsets: $0) }
+                .onMove { store.flavours.move(fromOffsets: $0, toOffset: $1) }
+                AddButton()
             }
-            .navigationTitle("Flavours")
+            .navigationTitle("Past Flavours")
+            .toolbar {
+                ToolbarItemGroup {
+                    EditButton()
+                }
+            }
         }
     }
 }
