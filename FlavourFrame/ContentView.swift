@@ -8,8 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var path = NavigationPath()
+    
     var body: some View {
-        FlavourList()
+        NavigationSplitView {
+            AddButton()
+        } detail: {
+            NavigationStack(path: $path) {
+                FlavourList()
+                    .navigationTitle("Past Flavours")
+            }
+        }
     }
 }
 

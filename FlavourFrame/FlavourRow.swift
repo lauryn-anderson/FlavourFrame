@@ -9,12 +9,24 @@ import SwiftUI
 
 struct FlavourRow: View {
     var flavour: Flavour
-
+    let thumbnailSize = CGSize(width: 150, height: 150)
+    
     var body: some View {
-        HStack {
-//            landmark.image
-//                .resizable()
-//                .frame(width: 50, height: 50)
+        VStack {
+            
+            if let thumbnail = flavour.drawing?.image(
+                from: CGRect(origin: CGPointZero, size: thumbnailSize),
+                scale: 0.5
+            ) {
+                Image(uiImage: thumbnail)
+            } else {
+                Image(size: thumbnailSize) { context in
+                    context.fill(
+                        Path(CGRect(origin: CGPointZero, size: thumbnailSize)),
+                        with: .color(.accentColor))
+                }
+            }
+            
             Text(flavour.name)
             Spacer()
         }

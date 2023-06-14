@@ -1,10 +1,14 @@
 [
-  {
-    "id" : "E866AD74-6B14-4029-A458-F3DC3F7E90F3",
-    "name" : "Twist Tea"
-  },
-  {
-    "id" : "E866AD74-6B14-4029-A458-F3D43F7E90F3",
-    "name" : "Honey Lemon Tea"
-  }
+    {
+        "id" : "E866AD74-6B14-4029-A458-F3DC3F7E90F3",
+        "name" : "Peppermint Tea"
+    },
+    {
+        "id" : "E866AD74-6B14-4029-A459-F3DC3F7E90F3",
+        "name" : "Chamomile Tea"
+    },
+    {
+        "id" : "E866AD74-6B14-4029-A458-F3D43F7E90F3",
+        "name" : "Honey Lemon Tea"
+    }
 ]

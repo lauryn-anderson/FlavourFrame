@@ -13,7 +13,6 @@ struct AddButton: View {
     var body: some View {
         Button {
             store.flavours.append(Flavour())
-            print("pressed")
         } label: {
             Text("+ New Flavour")
         }

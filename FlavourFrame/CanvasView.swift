@@ -14,7 +14,7 @@ struct CanvasView : UIViewRepresentable {
 
     func makeUIView(context: Context) -> PKCanvasView {
 //        canvasView.drawingPolicy = .anyInput
-        canvasView.backgroundColor = .lightGray
+//        canvasView.backgroundColor = .lightGray
         canvasView.isOpaque = false
         return canvasView
     }

@@ -9,10 +9,12 @@ import SwiftUI
 
 struct FlavourList: View {
     @EnvironmentObject var store: FlavourStore
+    let columns = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
 
     var body: some View {
-        NavigationView {
-            List {
+//        NavigationView {
+        ScrollView {
+            LazyVGrid(columns: columns) {
                 ForEach(store.flavours) { flavour in
                     NavigationLink {
                         DrawingView(flavour: flavour)
@@ -22,15 +24,15 @@ struct FlavourList: View {
                 }
                 .onDelete { store.flavours.remove(atOffsets: $0) }
                 .onMove { store.flavours.move(fromOffsets: $0, toOffset: $1) }
-                AddButton()
-            }
-            .navigationTitle("Past Flavours")
-            .toolbar {
-                ToolbarItemGroup {
-                    EditButton()
-                }
             }
         }
+        .navigationTitle("Past Flavours")
+//            .toolbar {
+//                ToolbarItemGroup {
+//                    EditButton()
+//                }
+//            }
+//        }
     }
 }
 
