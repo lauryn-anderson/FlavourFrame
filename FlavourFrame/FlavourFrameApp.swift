@@ -9,12 +9,26 @@ import SwiftUI
 
 @main
 struct FlavourFrameApp: App {    
-    @StateObject private var flavourStore = FlavourStore()
+    @StateObject private var store = FlavourStore()
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environmentObject(flavourStore)
+            ContentView(flavours: $store.flavours) {
+                Task {
+                    do {
+                        try await store.save(flavours: store.flavours)
+                    } catch {
+                        fatalError(error.localizedDescription)
+                    }
+                }
+            }
+            .task {
+                do {
+                    try await store.load()
+                } catch {
+                    fatalError(error.localizedDescription)
+                }
+            }
         }
     }
 }

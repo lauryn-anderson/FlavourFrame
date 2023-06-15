@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct AddButton: View {
-    @EnvironmentObject var store: FlavourStore
+    @Binding var flavours: [Flavour]
 
     var body: some View {
         Button {
-            store.flavours.append(Flavour())
+//            flavours.append(Flavour())
         } label: {
             Text("+ New Flavour")
         }
@@ -22,6 +22,6 @@ struct AddButton: View {
 
 struct AddButton_Previews: PreviewProvider {
     static var previews: some View {
-        AddButton()
+        AddButton(flavours: .constant(Flavour.sampleData))
     }
 }

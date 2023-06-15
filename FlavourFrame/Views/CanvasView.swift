@@ -13,8 +13,6 @@ struct CanvasView : UIViewRepresentable {
     let picker = PKToolPicker.init()
 
     func makeUIView(context: Context) -> PKCanvasView {
-//        canvasView.drawingPolicy = .anyInput
-//        canvasView.backgroundColor = .lightGray
         canvasView.isOpaque = false
         return canvasView
     }
