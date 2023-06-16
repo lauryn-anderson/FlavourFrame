@@ -14,18 +14,18 @@ struct FlavourRow: View {
     var body: some View {
         VStack {
             
-            if let thumbnail = flavour.drawing?.image(
-                from: CGRect(origin: CGPointZero, size: thumbnailSize),
-                scale: 0.5
-            ) {
-                Image(uiImage: thumbnail)
-            } else {
+//            if let thumbnail = flavour.drawing?.image(
+//                from: CGRect(origin: CGPointZero, size: thumbnailSize),
+//                scale: 1
+//            ) {
+//                Image(uiImage: thumbnail)
+//            } else {
                 Image(size: thumbnailSize) { context in
                     context.fill(
                         Path(CGRect(origin: CGPointZero, size: thumbnailSize)),
                         with: .color(.accentColor))
                 }
-            }
+//            }
             
             Text(flavour.name)
             Spacer()

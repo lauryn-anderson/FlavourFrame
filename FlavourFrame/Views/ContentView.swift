@@ -14,7 +14,7 @@ struct ContentView: View {
     // keep track of scenePhase (active/inactive/etc)
     @Environment(\.scenePhase) private var scenePhase
     // save action closure provided at instantiation
-    let saveAction: ()->Void
+    let saveAction: () -> Void
     @State private var isPresentingNewScrumView = false
 
     var body: some View {
