@@ -10,6 +10,7 @@ import SwiftUI
 @main
 struct FlavourFrameApp: App {    
     @StateObject private var store = FlavourStore()
+    @State private var errorWrapper: ErrorWrapper?
 
     var body: some Scene {
         WindowGroup {
@@ -18,7 +19,8 @@ struct FlavourFrameApp: App {
                     do {
                         try await store.save(flavours: store.flavours)
                     } catch {
-                        fatalError(error.localizedDescription)
+                        errorWrapper = ErrorWrapper(error: error,
+                                                    guidance: "Try again later.")
                     }
                 }
             }
@@ -26,8 +28,14 @@ struct FlavourFrameApp: App {
                 do {
                     try await store.load()
                 } catch {
-                    fatalError(error.localizedDescription)
+                    errorWrapper = ErrorWrapper(error: error,
+                                                guidance: "FlavourFrame will load sample data and continue.")
                 }
+            }
+            .sheet(item: $errorWrapper) {
+                store.flavours = Flavour.sampleData
+            } content: { wrapper in
+                ErrorView(errorWrapper: wrapper)
             }
         }
     }
