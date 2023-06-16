@@ -15,15 +15,21 @@ struct ContentView: View {
     @Environment(\.scenePhase) private var scenePhase
     // save action closure provided at instantiation
     let saveAction: ()->Void
+    @State private var isPresentingNewScrumView = false
 
     var body: some View {
         NavigationSplitView {
-            AddButton(flavours: $flavours)
+//            AddButton(flavours: $flavours, isPresentingNewFlavourView: $isPresentingNewScrumView)
         } detail: {
             NavigationStack(path: $path) {
                 FlavourList(flavours: $flavours)
                     .navigationTitle("Past Flavours")
+                AddButton(flavours: $flavours, isPresentingNewFlavourView: $isPresentingNewScrumView)
+                Spacer()
             }
+        }
+        .sheet(isPresented: $isPresentingNewScrumView) {
+            NewFlavourView(flavours: $flavours, isPresentingNewFlavourView: $isPresentingNewScrumView)
         }
         // save changes whenever activity pauses
         .onChange(of: scenePhase) { phase in

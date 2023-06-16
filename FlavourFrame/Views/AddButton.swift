@@ -9,19 +9,25 @@ import SwiftUI
 
 struct AddButton: View {
     @Binding var flavours: [Flavour]
+    @Binding var isPresentingNewFlavourView: Bool
+    let thumbnailSize = CGSize(width: 150, height: 150)
 
     var body: some View {
-        Button {
-//            flavours.append(Flavour())
-        } label: {
+        Button(action: {
+            isPresentingNewFlavourView = true
+        }) {
             Text("+ New Flavour")
+//            VStack {
+//                Image(systemName: "plus")
+//                Text("New Flavour")
+//            }
         }
-        .foregroundColor(.accentColor)
+        .accessibilityLabel("Add New Flavour")
     }
 }
 
 struct AddButton_Previews: PreviewProvider {
     static var previews: some View {
-        AddButton(flavours: .constant(Flavour.sampleData))
+        AddButton(flavours: .constant(Flavour.sampleData), isPresentingNewFlavourView: .constant(false))
     }
 }

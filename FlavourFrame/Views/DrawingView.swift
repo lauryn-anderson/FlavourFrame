@@ -15,11 +15,11 @@ struct DrawingView: View {
 
     var body: some View {
         VStack {
-            HStack {
-                Spacer()
-                TextField("Flavour", text: $flavour.name)
-                Spacer()
-            }
+//            HStack {
+//                Spacer()
+//                TextField("Flavour", text: $flavour.name)
+//                Spacer()
+//            }
             CanvasView(canvasView: $canvasView)
         }
         .navigationTitle(flavour.name)
