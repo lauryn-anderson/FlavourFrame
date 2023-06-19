@@ -8,13 +8,13 @@
 import SwiftUI
 
 @main
-struct FlavourFrameApp: App {    
+struct FlavourFrameApp: App {
     @StateObject private var store = FlavourStore()
     @State private var errorWrapper: ErrorWrapper?
 
     var body: some Scene {
         WindowGroup {
-            ContentView(flavours: $store.flavours) {
+            ContentView() {
                 Task {
                     do {
                         try await store.save(flavours: store.flavours)
@@ -24,6 +24,7 @@ struct FlavourFrameApp: App {
                     }
                 }
             }
+            .environmentObject(store)
             .task {
                 do {
                     try await store.load()

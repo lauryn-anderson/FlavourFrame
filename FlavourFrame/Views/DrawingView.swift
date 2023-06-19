@@ -10,8 +10,18 @@ import PencilKit
 
 
 struct DrawingView: View {
+    @EnvironmentObject var store: FlavourStore
+
     @State private var canvasView = PKCanvasView()
-    @Binding var flavour: Flavour
+
+    var flavour: Flavour
+
+    init(flavour: Flavour) {
+        self.flavour = flavour
+        if let drawing = flavour.drawing {
+            self.canvasView.drawing = drawing
+        }
+    }
 
     var body: some View {
         VStack {
@@ -27,20 +37,25 @@ struct DrawingView: View {
     }
     
     func saveDrawing() {
-        print("saved")
         // TODO: create and save image as well
         // flavour.drawing = canvasView.drawing
         // 1
 //        let image = canvasView.drawing.image(from: canvasView.bounds, scale: UIScreen.main.scale)
         // 2
-        let flavour = Flavour(
-            id: self.flavour.id,
-            name: self.flavour.name,
-            drawing: canvasView.drawing
-        )
+//        let flavour = Flavour(
+//            id: self.flavour.id,
+//            name: self.flavour.name,
+//            drawing: canvasView.drawing
+//        )
         
         // GOAL: assign canvas
-        self.flavour.drawing = flavour.drawing
+
+//        flavour.assignDrawing(canvasView.drawing)
+        guard let selectedFlavour else { return }
+        store.assignDrawing(canvasView.drawing, to: selectedFlavour)
+        print("saved")
+
+//        self.flavour.drawing = flavour.drawing
 //        _flavour.drawing = canvasView.drawing
 //        self.flavour = flavour
 
@@ -51,12 +66,17 @@ struct DrawingView: View {
             canvasView.drawing = drawing
         }
     }
+
+    private var selectedFlavour: Flavour? {
+        store.flavours.first { $0.id == flavour.id }
+    }
 }
 
 struct DrawingView_Previews: PreviewProvider {
     static let store = FlavourStore()
 
     static var previews: some View {
-        DrawingView(flavour: .constant(Flavour.sampleData[0]))
+        DrawingView(flavour: Flavour.sampleData[0])
+            .environmentObject(store)
     }
 }

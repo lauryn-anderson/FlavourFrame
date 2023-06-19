@@ -18,15 +18,19 @@ extension CanvasView: UIViewRepresentable {
     func makeUIView(context: Context) -> PKCanvasView {
         canvasView.isOpaque = false
         canvasView.delegate = context.coordinator
+//        picker = PKToolPicker.init()
         return canvasView
     }
 
     func updateUIView(_ uiView: PKCanvasView, context: Context) {
         picker.addObserver(canvasView)
-        picker.setVisible(true, forFirstResponder: uiView)
-        DispatchQueue.main.async {
-            uiView.becomeFirstResponder()
+//        picker.addObserver(uiView)
+        picker.setVisible(true, forFirstResponder: canvasView)
+        Task {
+            canvasView.becomeFirstResponder()
         }
+        print(picker.selectedTool)
+//        print("update")
     }
     
     func makeCoordinator() -> Coordinator {
@@ -45,9 +49,9 @@ class Coordinator: NSObject {
 }
 
 extension Coordinator: PKCanvasViewDelegate {
-  func canvasViewDrawingDidChange(_ canvasView: PKCanvasView) {
-    if !canvasView.drawing.bounds.isEmpty {
-      onSaved()
+    func canvasViewDrawingDidChange(_ canvasView: PKCanvasView) {
+        if !canvasView.drawing.bounds.isEmpty {
+            onSaved()
+        }
     }
-  }
 }

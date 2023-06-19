@@ -8,11 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
-    @Binding var flavours: [Flavour]
+
+    @EnvironmentObject var store: FlavourStore
+
     // track navigation by storing on path
     @State private var path = NavigationPath()
+
     // keep track of scenePhase (active/inactive/etc)
     @Environment(\.scenePhase) private var scenePhase
+
     // save action closure provided at instantiation
     let saveAction: () -> Void
     @State private var isPresentingNewScrumView = false
@@ -22,14 +26,14 @@ struct ContentView: View {
 //            AddButton(flavours: $flavours, isPresentingNewFlavourView: $isPresentingNewScrumView)
         } detail: {
             NavigationStack(path: $path) {
-                FlavourList(flavours: $flavours)
+                FlavourList()
                     .navigationTitle("Past Flavours")
-                AddButton(flavours: $flavours, isPresentingNewFlavourView: $isPresentingNewScrumView)
+                AddButton(flavours: $store.flavours, isPresentingNewFlavourView: $isPresentingNewScrumView)
                 Spacer()
             }
         }
         .sheet(isPresented: $isPresentingNewScrumView) {
-            NewFlavourView(flavours: $flavours, isPresentingNewFlavourView: $isPresentingNewScrumView)
+            NewFlavourView(isPresentingNewFlavourView: $isPresentingNewScrumView)
         }
         // save changes whenever activity pauses
         .onChange(of: scenePhase) { phase in
@@ -39,10 +43,12 @@ struct ContentView: View {
 }
 
 struct ContentView_Previews: PreviewProvider {
+    static let store = FlavourStore(flavours: Flavour.sampleData)
+
     static var previews: some View {
-        ContentView(flavours: .constant(Flavour.sampleData), saveAction: {})
+        ContentView(saveAction: {})
             .previewDevice("iPad (9th generation)")
-//            .environmentObject(FlavourStore())
+            .environmentObject(store)
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }

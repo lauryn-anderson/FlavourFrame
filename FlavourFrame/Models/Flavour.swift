@@ -8,7 +8,7 @@
 import Foundation
 import PencilKit
 
-struct Flavour: Codable, Identifiable {
+struct Flavour: Codable, Identifiable, Hashable {
     var id = UUID()
     var name = "New Flavour"
     var drawing: PKDrawing?
@@ -17,6 +17,16 @@ struct Flavour: Codable, Identifiable {
         Flavour()
     }
 
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+        hasher.combine(name)
+        // The PKDrawing, which is not hashable, is not needed to determine
+        // the uniqueness of the Flavour.
+    }
+
+    mutating func assignDrawing(_ drawing: PKDrawing) {
+        self.drawing = drawing
+    }
 }
 
 extension Flavour {

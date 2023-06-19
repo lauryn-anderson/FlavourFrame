@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct NewFlavourView: View {
+    @EnvironmentObject var store: FlavourStore
+
     @State private var newFlavour = Flavour.emptyFlavour
-    @Binding var flavours: [Flavour]
+
     @Binding var isPresentingNewFlavourView: Bool
     
     var body: some View {
@@ -23,17 +25,24 @@ struct NewFlavourView: View {
                     }
                     ToolbarItem(placement: .confirmationAction) {
                         Button("Add") {
-                            flavours.append(newFlavour)
+                            addNewFlavour(newFlavour)
                             isPresentingNewFlavourView = false
                         }
                     }
                 }
         }
     }
+
+    private func addNewFlavour(_ newFlavour: Flavour) {
+        store.flavours.append(newFlavour)
+    }
 }
 
 struct NewFlavourView_Previews: PreviewProvider {
+    static let store = FlavourStore(flavours: Flavour.sampleData)
+
     static var previews: some View {
-        NewFlavourView(flavours: .constant(Flavour.sampleData), isPresentingNewFlavourView: .constant(true))
+        NewFlavourView(isPresentingNewFlavourView: .constant(true))
+            .environmentObject(store)
     }
 }

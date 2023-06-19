@@ -20,9 +20,17 @@ class FlavourStore: ObservableObject {
                                     in: .userDomainMask,
                                     appropriateFor: nil,
                                     create: false)
-        .appendingPathComponent("flavours.data")
+        .appendingPathComponent("flavours.json")
     }
-    
+
+    init() {
+        self.flavours = []
+    }
+
+    init(flavours: [Flavour]) {
+        self.flavours = flavours
+    }
+
     // load flavour data from file
     func load() async throws {
         let task = Task<[Flavour], Error> {
@@ -45,5 +53,15 @@ class FlavourStore: ObservableObject {
             try data.write(to: outfile)
         }
         _ = try await task.value
+    }
+}
+
+
+extension FlavourStore {
+    func assignDrawing(_ drawing: PKDrawing, to flavour: Flavour) {
+        guard let index = flavours.firstIndex(of: flavour) else { return }
+        var flavour = flavours[index]
+        flavour.assignDrawing(drawing)
+        flavours[index] = flavour
     }
 }
