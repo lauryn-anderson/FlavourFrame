@@ -17,10 +17,6 @@ struct AddButton: View {
             isPresentingNewFlavourView = true
         }) {
             Text("+ New Flavour")
-//            VStack {
-//                Image(systemName: "plus")
-//                Text("New Flavour")
-//            }
         }
         .accessibilityLabel("Add New Flavour")
     }

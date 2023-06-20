@@ -25,11 +25,6 @@ struct DrawingView: View {
 
     var body: some View {
         VStack {
-//            HStack {
-//                Spacer()
-//                TextField("Flavour", text: $flavour.name)
-//                Spacer()
-//            }
             CanvasView(canvasView: $canvasView, onSaved: saveDrawing)
         }
         .navigationTitle(flavour.name)
@@ -37,28 +32,8 @@ struct DrawingView: View {
     }
     
     func saveDrawing() {
-        // TODO: create and save image as well
-        // flavour.drawing = canvasView.drawing
-        // 1
-//        let image = canvasView.drawing.image(from: canvasView.bounds, scale: UIScreen.main.scale)
-        // 2
-//        let flavour = Flavour(
-//            id: self.flavour.id,
-//            name: self.flavour.name,
-//            drawing: canvasView.drawing
-//        )
-        
-        // GOAL: assign canvas
-
-//        flavour.assignDrawing(canvasView.drawing)
         guard let selectedFlavour else { return }
         store.assignDrawing(canvasView.drawing, to: selectedFlavour)
-        print("saved")
-
-//        self.flavour.drawing = flavour.drawing
-//        _flavour.drawing = canvasView.drawing
-//        self.flavour = flavour
-
     }
     
     func restoreDrawing() {

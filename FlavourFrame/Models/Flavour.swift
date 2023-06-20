@@ -7,11 +7,27 @@
 
 import Foundation
 import PencilKit
+import SwiftUI
+
 
 struct Flavour: Codable, Identifiable, Hashable {
+    
     var id = UUID()
     var name = "New Flavour"
     var drawing: PKDrawing?
+    static var defaultImage = UIColor.secondarySystemBackground.image(CGSize(width: 1, height: 1))
+    
+    var image: UIImage {
+        get {
+            if let bounds = self.drawing?.bounds {
+                if let thumbnail = self.drawing?.image(
+                    from: bounds,
+                    scale: 1
+                ) { return thumbnail}
+            }
+            return Flavour.defaultImage
+        }
+    }
     
     static var emptyFlavour: Flavour {
         Flavour()
@@ -35,4 +51,13 @@ extension Flavour {
         Flavour(id: UUID(), name: "Honey Lemon Tea", drawing: nil),
         Flavour(id: UUID(), name: "Chamomile Tea", drawing: nil),
     ]
+}
+
+extension UIColor {
+    func image(_ size: CGSize = CGSize(width: 1, height: 1)) -> UIImage {
+        return UIGraphicsImageRenderer(size: size).image { rendererContext in
+            self.setFill()
+            rendererContext.fill(CGRect(origin: .zero, size: size))
+        }
+    }
 }

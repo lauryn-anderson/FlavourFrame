@@ -17,7 +17,18 @@ struct FlavourList: View {
             LazyVGrid(columns: columns) {
                 ForEach(store.flavours) { flavour in
                     NavigationLink(value: flavour) {
-                        FlavourRow(flavour: flavour)
+                        VStack {
+                            Spacer()
+                            Image(uiImage: flavour.image)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .accessibilityLabel("drawing of \(flavour.name)")
+                                .padding()
+                            Spacer()
+                            Text(flavour.name)
+                            Spacer()
+                        }
+                        .aspectRatio(CGSize(width: 1, height: 1), contentMode: .fit)
                     }
                 }
             }

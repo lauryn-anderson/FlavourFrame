@@ -27,9 +27,11 @@ struct ContentView: View {
         } detail: {
             NavigationStack(path: $path) {
                 FlavourList()
-                    .navigationTitle("Past Flavours")
-                AddButton(flavours: $store.flavours, isPresentingNewFlavourView: $isPresentingNewScrumView)
+                    .navigationTitle("Flavours")
                 Spacer()
+            }
+            .toolbar {
+                AddButton(flavours: $store.flavours, isPresentingNewFlavourView: $isPresentingNewScrumView)
             }
         }
         .sheet(isPresented: $isPresentingNewScrumView) {

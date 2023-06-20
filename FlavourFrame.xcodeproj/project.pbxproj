@@ -20,7 +20,6 @@
 		1452DCAE2A3C069A00EF7D3E /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1452DCAD2A3C069A00EF7D3E /* ErrorView.swift */; };
 		1452DCB02A3CD25B00EF7D3E /* NewFlavourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1452DCAF2A3CD25B00EF7D3E /* NewFlavourView.swift */; };
 		1452DCB22A3CD30A00EF7D3E /* DetailEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1452DCB12A3CD30A00EF7D3E /* DetailEditView.swift */; };
-		14E244DA2A33BCEB009BCD11 /* FlavourRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E244D92A33BCEB009BCD11 /* FlavourRow.swift */; };
 		14E244DC2A33C5F2009BCD11 /* FlavourList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E244DB2A33C5F2009BCD11 /* FlavourList.swift */; };
 		14E244DE2A381302009BCD11 /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E244DD2A381301009BCD11 /* AddButton.swift */; };
 /* End PBXBuildFile section */
@@ -40,7 +39,6 @@
 		1452DCAD2A3C069A00EF7D3E /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		1452DCAF2A3CD25B00EF7D3E /* NewFlavourView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFlavourView.swift; sourceTree = "<group>"; };
 		1452DCB12A3CD30A00EF7D3E /* DetailEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEditView.swift; sourceTree = "<group>"; };
-		14E244D92A33BCEB009BCD11 /* FlavourRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlavourRow.swift; sourceTree = "<group>"; };
 		14E244DB2A33C5F2009BCD11 /* FlavourList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlavourList.swift; sourceTree = "<group>"; };
 		14E244DD2A381301009BCD11 /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -109,7 +107,6 @@
 				145000462A327942006CB348 /* ContentView.swift */,
 				14E244DB2A33C5F2009BCD11 /* FlavourList.swift */,
 				1452DCAD2A3C069A00EF7D3E /* ErrorView.swift */,
-				14E244D92A33BCEB009BCD11 /* FlavourRow.swift */,
 				14E244DD2A381301009BCD11 /* AddButton.swift */,
 				145000542A327AE8006CB348 /* DrawingView.swift */,
 				1452DCAF2A3CD25B00EF7D3E /* NewFlavourView.swift */,
@@ -194,7 +191,6 @@
 				145000452A327942006CB348 /* FlavourFrameApp.swift in Sources */,
 				1452DCA82A3BC54700EF7D3E /* Flavour.swift in Sources */,
 				1452DCB02A3CD25B00EF7D3E /* NewFlavourView.swift in Sources */,
-				14E244DA2A33BCEB009BCD11 /* FlavourRow.swift in Sources */,
 				145000572A328BA5006CB348 /* FlavourStore.swift in Sources */,
 				14E244DC2A33C5F2009BCD11 /* FlavourList.swift in Sources */,
 				1452DCB22A3CD30A00EF7D3E /* DetailEditView.swift in Sources */,
