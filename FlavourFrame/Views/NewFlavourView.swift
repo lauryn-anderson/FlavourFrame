@@ -34,7 +34,9 @@ struct NewFlavourView: View {
     }
 
     private func addNewFlavour(_ newFlavour: Flavour) {
-        store.flavours.insert(newFlavour, at: 0)
+//        withAnimation {
+            store.flavours.insert(newFlavour, at: 0)
+//        }
     }
 }
 
