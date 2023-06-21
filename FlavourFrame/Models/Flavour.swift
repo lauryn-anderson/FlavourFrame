@@ -15,10 +15,6 @@ struct Flavour: Layer {
     var name = "New Flavour"
     var drawing: PKDrawing? = nil
     
-    static var emptyFlavour: Flavour {
-        Flavour()
-    }
-    
     init() {
         self.id = UUID()
         self.name = "New Flavour"
@@ -29,6 +25,10 @@ struct Flavour: Layer {
         self.id = id
         self.name = name
         self.drawing = drawing
+    }
+    
+    static var emptyFlavour: Flavour {
+        Flavour()
     }
 }
 

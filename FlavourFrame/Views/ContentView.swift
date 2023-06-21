@@ -56,6 +56,9 @@ struct ContentView: View {
         .sheet(isPresented: $isPresentingNewFlavourView) {
             NewFlavourView(isPresentingNewFlavourView: $isPresentingNewFlavourView)
         }
+        .sheet(isPresented: $isPresentingNewFrameView) {
+            NewFrameView(isPresentingNewFrameView: $isPresentingNewFrameView)
+        }
         // save changes whenever activity pauses
         .onChange(of: scenePhase) { phase in
             if phase == .inactive { saveAction() }
@@ -72,9 +75,4 @@ struct ContentView_Previews: PreviewProvider {
             .environmentObject(data)
             .previewInterfaceOrientation(.landscapeLeft)
     }
-}
-
-enum LayerType: Identifiable {
-    var id: Self { self }
-    case flavour, frame
 }

@@ -1,5 +1,5 @@
 //
-//  DrawingView.swift
+//  FlavourView.swift
 //  FlavourFrame
 //
 //  Created by Lauryn Anderson on 2023-06-08.
@@ -9,7 +9,7 @@ import SwiftUI
 import PencilKit
 
 
-struct DrawingView: View {
+struct FlavourView: View {
     @EnvironmentObject var data: DataManager
 
     @State private var canvasView = PKCanvasView()
@@ -47,11 +47,11 @@ struct DrawingView: View {
     }
 }
 
-struct DrawingView_Previews: PreviewProvider {
+struct FlavourView_Previews: PreviewProvider {
     static let data = DataManager(flavours: Flavour.sampleData, frames: Frame.sampleData)
 
     static var previews: some View {
-        DrawingView(flavour: Flavour.sampleData[0])
+        FlavourView(flavour: Flavour.sampleData[0])
             .environmentObject(data)
     }
 }

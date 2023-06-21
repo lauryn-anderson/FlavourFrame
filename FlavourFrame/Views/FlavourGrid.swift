@@ -27,7 +27,7 @@ struct FlavourGrid: View {
             }
             .navigationTitle("Flavours")
             .navigationDestination(for: Flavour.self) { flavour in
-                DrawingView(flavour: flavour)
+                FlavourView(flavour: flavour)
             }
             .toolbar {
                 AddButton(isPresentingNewView: $isPresentingNewFlavourView, layer: .flavour)

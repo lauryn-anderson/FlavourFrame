@@ -50,3 +50,8 @@ extension UIColor {
         }
     }
 }
+
+enum LayerType: Identifiable {
+    var id: Self { self }
+    case flavour, frame
+}

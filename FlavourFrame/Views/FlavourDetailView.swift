@@ -1,5 +1,5 @@
 //
-//  DetailEditView.swift
+//  FlavourDetailView.swift
 //  FlavourFrame
 //
 //  Created by Lauryn Anderson on 2023-06-16.
@@ -7,9 +7,8 @@
 
 import SwiftUI
 
-struct DetailEditView: View {
+struct FlavourDetailView: View {
     @Binding var flavour: Flavour
-//    @State private var newAttendeeName = ""
 
     var body: some View {
         Form {
@@ -18,8 +17,8 @@ struct DetailEditView: View {
     }
 }
 
-struct DetailEditView_Previews: PreviewProvider {
+struct FlavourDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailEditView(flavour: .constant(Flavour.sampleData[0]))
+        FlavourDetailView(flavour: .constant(Flavour.sampleData[0]))
     }
 }

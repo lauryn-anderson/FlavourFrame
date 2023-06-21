@@ -27,8 +27,7 @@ struct FrameGrid: View {
             }
             .navigationTitle("Frames")
             .navigationDestination(for: Frame.self) { frame in
-//                DrawingView(frame: frame)
-                Text(frame.name)
+                FrameView(frame: frame)
             }
             .toolbar {
                 AddButton(isPresentingNewView: $isPresentingNewFrameView, layer: .frame)

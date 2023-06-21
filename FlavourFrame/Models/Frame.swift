@@ -26,6 +26,10 @@ struct Frame: Layer {
         self.name = name
         self.drawing = drawing
     }
+    
+    static var emptyFrame: Frame {
+        Frame()
+    }
 }
 
 extension Frame {

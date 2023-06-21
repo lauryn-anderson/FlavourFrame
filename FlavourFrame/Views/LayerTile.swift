@@ -21,7 +21,6 @@ struct LayerTile: View {
                 .padding()
             Spacer()
             Text(layer.name)
-            Spacer()
         }
         .aspectRatio(CGSize(width: 1, height: 1), contentMode: .fit)
     }
