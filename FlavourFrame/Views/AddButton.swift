@@ -8,22 +8,28 @@
 import SwiftUI
 
 struct AddButton: View {
-    @Binding var flavours: [Flavour]
-    @Binding var isPresentingNewFlavourView: Bool
+    @Binding var isPresentingNewView: Bool
+    var layer: LayerType
     let thumbnailSize = CGSize(width: 150, height: 150)
 
     var body: some View {
         Button(action: {
-            isPresentingNewFlavourView = true
+            isPresentingNewView = true
         }) {
-            Text("+ New Flavour")
+            switch layer {
+            case .flavour:
+                Text("+ New Flavour")
+                    .accessibilityLabel("Add New Flavour")
+            case .frame:
+                Text("+ New Frame")
+                    .accessibilityLabel("Add New Frame")
+            }
         }
-        .accessibilityLabel("Add New Flavour")
     }
 }
 
 struct AddButton_Previews: PreviewProvider {
     static var previews: some View {
-        AddButton(flavours: .constant(Flavour.sampleData), isPresentingNewFlavourView: .constant(false))
+        AddButton(isPresentingNewView: .constant(false), layer: .frame)
     }
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct NewFlavourView: View {
-    @EnvironmentObject var store: FlavourStore
+    @EnvironmentObject var data: DataManager
 
     @State private var newFlavour = Flavour.emptyFlavour
 
@@ -35,16 +35,16 @@ struct NewFlavourView: View {
 
     private func addNewFlavour(_ newFlavour: Flavour) {
 //        withAnimation {
-            store.flavours.insert(newFlavour, at: 0)
+        data.store.flavours.insert(newFlavour, at: 0)
 //        }
     }
 }
 
 struct NewFlavourView_Previews: PreviewProvider {
-    static let store = FlavourStore(flavours: Flavour.sampleData)
+    static let data = DataManager(flavours: Flavour.sampleData, frames: Frame.sampleData)
 
     static var previews: some View {
         NewFlavourView(isPresentingNewFlavourView: .constant(true))
-            .environmentObject(store)
+            .environmentObject(data)
     }
 }

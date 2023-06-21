@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct FlavourFrameApp: App {
-    @StateObject private var store = FlavourStore()
+    @StateObject private var dataManager = DataManager()
     @State private var errorWrapper: ErrorWrapper?
 
     var body: some Scene {
@@ -17,24 +17,25 @@ struct FlavourFrameApp: App {
             ContentView() {
                 Task {
                     do {
-                        try await store.save(flavours: store.flavours)
+                        try await dataManager.save(store: dataManager.store)
                     } catch {
                         errorWrapper = ErrorWrapper(error: error,
                                                     guidance: "Try again later.")
                     }
                 }
             }
-            .environmentObject(store)
+            .environmentObject(dataManager)
             .task {
                 do {
-                    try await store.load()
+                    try await dataManager.load()
                 } catch {
                     errorWrapper = ErrorWrapper(error: error,
                                                 guidance: "FlavourFrame will load sample data and continue.")
                 }
             }
             .sheet(item: $errorWrapper) {
-                store.flavours = Flavour.sampleData
+                dataManager.store.flavours = Flavour.sampleData
+                dataManager.store.frames = Frame.sampleData
             } content: { wrapper in
                 ErrorView(errorWrapper: wrapper)
             }

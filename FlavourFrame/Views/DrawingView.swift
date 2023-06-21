@@ -10,7 +10,7 @@ import PencilKit
 
 
 struct DrawingView: View {
-    @EnvironmentObject var store: FlavourStore
+    @EnvironmentObject var data: DataManager
 
     @State private var canvasView = PKCanvasView()
 
@@ -33,7 +33,7 @@ struct DrawingView: View {
     
     func saveDrawing() {
         guard let selectedFlavour else { return }
-        store.assignDrawing(canvasView.drawing, to: selectedFlavour)
+        data.store.assignDrawing(canvasView.drawing, to: selectedFlavour)
     }
     
     func restoreDrawing() {
@@ -43,15 +43,15 @@ struct DrawingView: View {
     }
 
     private var selectedFlavour: Flavour? {
-        store.flavours.first { $0.id == flavour.id }
+        data.store.flavours.first { $0.id == flavour.id }
     }
 }
 
 struct DrawingView_Previews: PreviewProvider {
-    static let store = FlavourStore()
+    static let data = DataManager(flavours: Flavour.sampleData, frames: Frame.sampleData)
 
     static var previews: some View {
         DrawingView(flavour: Flavour.sampleData[0])
-            .environmentObject(store)
+            .environmentObject(data)
     }
 }
