@@ -1,48 +1,48 @@
 //
-//  NewFlavourView.swift
-//  FlavourFrame
+//  NewFrameView.swift
+//  FrameFrame
 //
-//  Created by Lauryn Anderson on 2023-06-16.
+//  Created by Lauryn Anderson on 2023-06-21.
 //
 
 import SwiftUI
 
-struct NewFlavourView: View {
+struct NewFrameView: View {
     @EnvironmentObject var data: DataManager
-    @State private var newFlavour = Flavour.emptyFlavour
-    @Binding var isPresentingNewFlavourView: Bool
+    @State private var newFrame = Frame.emptyFrame
+    @Binding var isPresentingNewFrameView: Bool
     
     var body: some View {
         NavigationStack {
-            FlavourDetailView(flavour: $newFlavour)
+            FrameDetailView(frame: $newFrame)
                 .toolbar {
                     ToolbarItem(placement: .cancellationAction) {
                         Button("Dismiss") {
-                            isPresentingNewFlavourView = false
+                            isPresentingNewFrameView = false
                         }
                     }
                     ToolbarItem(placement: .confirmationAction) {
                         Button("Add") {
-                            addNewFlavour(newFlavour)
-                            isPresentingNewFlavourView = false
+                            addNewFrame(newFrame)
+                            isPresentingNewFrameView = false
                         }
                     }
                 }
         }
     }
 
-    private func addNewFlavour(_ newFlavour: Flavour) {
+    private func addNewFrame(_ newFrame: Frame) {
         withAnimation {
-            data.store.flavours.insert(newFlavour, at: 0)
+            data.store.frames.insert(newFrame, at: 0)
         }
     }
 }
 
-struct NewFlavourView_Previews: PreviewProvider {
+struct NewFrameView_Previews: PreviewProvider {
     static let data = DataManager(flavours: Flavour.sampleData, frames: Frame.sampleData)
 
     static var previews: some View {
-        NewFlavourView(isPresentingNewFlavourView: .constant(true))
+        NewFrameView(isPresentingNewFrameView: .constant(true))
             .environmentObject(data)
     }
 }

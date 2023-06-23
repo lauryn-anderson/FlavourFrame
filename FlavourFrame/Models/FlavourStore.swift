@@ -11,8 +11,9 @@ import SwiftUI
 
 
 @MainActor
-class FlavourStore: ObservableObject {
+class DataStore: ObservableObject {
     @Published var flavours: [Flavour] = []
+    @Published var frames: [Frame] = []
     
     // keep file for flavour data in user's Documents directory
     private static func fileURL() throws -> URL {
@@ -20,20 +21,22 @@ class FlavourStore: ObservableObject {
                                     in: .userDomainMask,
                                     appropriateFor: nil,
                                     create: false)
-        .appendingPathComponent("flavours.json")
+        .appendingPathComponent("store.json")
     }
 
     init() {
         self.flavours = []
+        self.frames = []
     }
 
-    init(flavours: [Flavour]) {
+    init(flavours: [Flavour], frames: [Frame]) {
         self.flavours = flavours
+        self.frames = frames
     }
 
     // load flavour data from file
     func load() async throws {
-        let task = Task<[Flavour], Error> {
+        let task = Task<Store, Error> {
             let fileURL = try Self.fileURL()
             guard let data = try? Data(contentsOf: fileURL) else {
                 return []
@@ -57,7 +60,7 @@ class FlavourStore: ObservableObject {
 }
 
 
-extension FlavourStore {
+extension DataStore {
     func assignDrawing(_ drawing: PKDrawing, to flavour: Flavour) {
         guard let index = flavours.firstIndex(of: flavour) else { return }
         var flavour = flavours[index]
