@@ -127,15 +127,15 @@
 				146795552A43B44A00C31295 /* LayerTile.swift */,
 				14E244DB2A33C5F2009BCD11 /* FlavourGrid.swift */,
 				1467954D2A43A02400C31295 /* FrameGrid.swift */,
-				1452DCAD2A3C069A00EF7D3E /* ErrorView.swift */,
-				14E244DD2A381301009BCD11 /* AddButton.swift */,
 				145000542A327AE8006CB348 /* FlavourView.swift */,
 				146795572A43B96E00C31295 /* FrameView.swift */,
 				1452DCAF2A3CD25B00EF7D3E /* NewFlavourView.swift */,
 				14DD067A2A43BC66007F6D68 /* NewFrameView.swift */,
-				145000522A3279A5006CB348 /* CanvasView.swift */,
 				1452DCB12A3CD30A00EF7D3E /* FlavourDetailView.swift */,
 				14DD067C2A43BCE4007F6D68 /* FrameDetailView.swift */,
+				145000522A3279A5006CB348 /* CanvasView.swift */,
+				14E244DD2A381301009BCD11 /* AddButton.swift */,
+				1452DCAD2A3C069A00EF7D3E /* ErrorView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

@@ -12,8 +12,6 @@ struct FrameGrid: View {
     @Binding var path: NavigationPath
     @Binding var isPresentingNewFrameView: Bool
 
-    let columns = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
-
     var body: some View {
         NavigationStack(path: $path) {
             ScrollView {

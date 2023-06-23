@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+let columns = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
+
 struct ContentView: View {
 
     @EnvironmentObject var data: DataManager
