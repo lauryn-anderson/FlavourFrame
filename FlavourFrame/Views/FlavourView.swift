@@ -24,7 +24,10 @@ struct FlavourView: View {
     }
 
     var body: some View {
-        VStack {
+        ZStack {
+            if let frame = flavour.frame?.image {
+                Image(uiImage: frame)
+            }
             CanvasView(canvasView: $canvasView, onSaved: saveDrawing)
         }
         .navigationTitle(flavour.name)
