@@ -25,17 +25,19 @@ struct DataStore: Codable {
         self.frames = frames
     }
 
-    mutating func assignDrawing(_ drawing: PKDrawing, to flavour: Flavour) {
-        guard let index = flavours.firstIndex(of: flavour) else { return }
-        var flavour = flavours[index]
-        flavour.assignDrawing(drawing)
-        flavours[index] = flavour
-    }
-    
-    mutating func assignDrawing(_ drawing: PKDrawing, to frame: Frame) {
-        guard let index = frames.firstIndex(of: frame) else { return }
-        var frame = frames[index]
-        frame.assignDrawing(drawing)
-        frames[index] = frame
+    mutating func assignDrawing(_ drawing: PKDrawing, to layer: any Layer) {
+        if let flavour = layer as? Flavour {
+            guard let index = flavours.firstIndex(of: flavour) else { return }
+            var flavour = flavours[index]
+            flavour.assignDrawing(drawing)
+            flavours[index] = flavour
+        }
+        
+        if let frame = layer as? Frame {
+            guard let index = frames.firstIndex(of: frame) else { return }
+            var frame = frames[index]
+            frame.assignDrawing(drawing)
+            frames[index] = frame
+        }
     }
 }
