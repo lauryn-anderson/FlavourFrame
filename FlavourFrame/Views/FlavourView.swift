@@ -11,9 +11,7 @@ import PencilKit
 
 struct FlavourView: View {
     @EnvironmentObject var data: DataManager
-
     @State private var canvasView = PKCanvasView()
-
     var flavour: Flavour
 
     init(flavour: Flavour) {
@@ -24,7 +22,10 @@ struct FlavourView: View {
     }
 
     var body: some View {
-        VStack {
+        ZStack {
+            if let frame = flavour.frame?.image {
+                Image(uiImage: frame)
+            }
             CanvasView(canvasView: $canvasView, onSaved: saveDrawing)
         }
         .navigationTitle(flavour.name)

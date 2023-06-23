@@ -14,11 +14,26 @@ struct LayerTile: View {
     var body: some View {
         VStack {
             Spacer()
-            Image(uiImage: layer.image)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .accessibilityLabel("drawing of \(layer.name)")
-                .padding()
+            ZStack {
+                Image(uiImage: UIColor.secondarySystemBackground.image(CGSize(width: 1, height: 1)))
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                if let flavour = layer as? Flavour {
+                    if let frame = flavour.frame?.image {
+                        Image(uiImage: frame)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .padding()
+                    }
+                }
+                if let image = layer.image {
+                    Image(uiImage: image)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .accessibilityLabel("drawing of \(layer.name)")
+                        .padding()
+                }
+            }
             Spacer()
             Text(layer.name)
         }

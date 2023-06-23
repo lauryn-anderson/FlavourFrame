@@ -11,6 +11,7 @@ import SwiftUI
 
 
 struct Flavour: Layer {
+    
     var id: UUID
     var name: String
     var drawing: PKDrawing?
@@ -32,6 +33,15 @@ struct Flavour: Layer {
     
     static var emptyFlavour: Flavour {
         Flavour()
+    }
+    
+    var bounds: CGRect? {
+        get {
+            if let frame = self.frame {
+                return frame.bounds
+            }
+            return self.drawing?.bounds
+        }
     }
 }
 

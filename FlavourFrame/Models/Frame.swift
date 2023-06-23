@@ -30,6 +30,12 @@ struct Frame: Layer {
     static var emptyFrame: Frame {
         Frame()
     }
+    
+    var bounds: CGRect? {
+        get {
+            return self.drawing?.bounds
+        }
+    }
 }
 
 extension Frame {

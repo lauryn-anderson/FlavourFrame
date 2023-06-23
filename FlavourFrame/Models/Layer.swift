@@ -14,19 +14,20 @@ protocol Layer: Codable, Identifiable, Hashable {
     var id: UUID { get }
     var name: String { get set }
     var drawing: PKDrawing? { get set }
-    var image: UIImage { get }
+    var image: UIImage? { get }
+    var bounds: CGRect? { get }
 }
 
 extension Layer {
-    var image: UIImage {
+    var image: UIImage? {
         get {
-            if let bounds = self.drawing?.bounds {
+            if let bounds = self.bounds {
                 if let thumbnail = self.drawing?.image(
                     from: bounds,
                     scale: 1
                 ) { return thumbnail}
             }
-            return UIColor.secondarySystemBackground.image(CGSize(width: 1, height: 1))
+            return nil
         }
     }
     
