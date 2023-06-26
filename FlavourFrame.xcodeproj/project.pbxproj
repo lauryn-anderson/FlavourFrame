@@ -53,6 +53,7 @@
 		146795552A43B44A00C31295 /* LayerTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerTile.swift; sourceTree = "<group>"; };
 		14DD067A2A43BC66007F6D68 /* NewFrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFrameView.swift; sourceTree = "<group>"; };
 		14DD067C2A43BCE4007F6D68 /* FrameDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameDetailView.swift; sourceTree = "<group>"; };
+		14DD067E2A4A129B007F6D68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		14E244DB2A33C5F2009BCD11 /* FlavourGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlavourGrid.swift; sourceTree = "<group>"; };
 		14E244DD2A381301009BCD11 /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,6 +88,7 @@
 		145000432A327942006CB348 /* FlavourFrame */ = {
 			isa = PBXGroup;
 			children = (
+				14DD067E2A4A129B007F6D68 /* Info.plist */,
 				1452DCA92A3BC57100EF7D3E /* Models */,
 				1452DCAA2A3BC58C00EF7D3E /* Views */,
 				145000442A327942006CB348 /* FlavourFrameApp.swift */,
@@ -358,6 +360,7 @@
 				DEVELOPMENT_TEAM = 58P9Y6D3D8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FlavourFrame/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -388,6 +391,7 @@
 				DEVELOPMENT_TEAM = 58P9Y6D3D8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FlavourFrame/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
