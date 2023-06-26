@@ -11,18 +11,9 @@ import PencilKit
 struct CanvasView {
     @Binding var canvasView: PKCanvasView
     let onSaved: () -> Void
-    @State var picker = PKToolPicker.init()
-}
-
-private extension CanvasView {
-  func showToolPicker() {
-    // 1
-    picker.setVisible(true, forFirstResponder: canvasView)
-    // 2
-    picker.addObserver(canvasView)
-    // 3
-    canvasView.becomeFirstResponder()
-  }
+    @Binding var isErasing: Bool
+    var eraser: PKEraserTool
+    var ink: PKInkingTool
 }
 
 extension CanvasView: UIViewRepresentable {
@@ -30,18 +21,18 @@ extension CanvasView: UIViewRepresentable {
         // add delegate to track changes
         canvasView.delegate = context.coordinator
         
-        // add tool picker to canvas
-        picker.setVisible(true, forFirstResponder: canvasView)
-        picker.addObserver(canvasView)
-        canvasView.becomeFirstResponder()
+        canvasView.drawingPolicy = .anyInput
+        canvasView.tool = isErasing ? eraser : ink
         canvasView.isOpaque = false
         return canvasView
     }
-
-    func updateUIView(_ uiView: PKCanvasView, context: Context) { }
+    
+    func updateUIView(_ uiView: PKCanvasView, context: Context) {
+        uiView.tool = isErasing ? eraser : ink
+    }
     
     func makeCoordinator() -> Coordinator {
-      Coordinator(canvasView: $canvasView, onSaved: onSaved)
+        Coordinator(canvasView: $canvasView, onSaved: onSaved)
     }
 }
 

@@ -27,6 +27,12 @@
 		146795562A43B44A00C31295 /* LayerTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146795552A43B44A00C31295 /* LayerTile.swift */; };
 		14DD067B2A43BC66007F6D68 /* NewFrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DD067A2A43BC66007F6D68 /* NewFrameView.swift */; };
 		14DD067D2A43BCE4007F6D68 /* FrameDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DD067C2A43BCE4007F6D68 /* FrameDetailView.swift */; };
+		14DD06802A4A214C007F6D68 /* UndoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DD067F2A4A214C007F6D68 /* UndoButton.swift */; };
+		14DD06822A4A2674007F6D68 /* RedoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DD06812A4A2674007F6D68 /* RedoButton.swift */; };
+		14DD06852A4A27C0007F6D68 /* PenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DD06842A4A27C0007F6D68 /* PenButton.swift */; };
+		14DD06872A4A2E9F007F6D68 /* RulerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DD06862A4A2E9F007F6D68 /* RulerButton.swift */; };
+		14DD06892A4A3502007F6D68 /* EraserButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DD06882A4A3502007F6D68 /* EraserButton.swift */; };
+		14DD068B2A4A4F97007F6D68 /* ColourButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DD068A2A4A4F97007F6D68 /* ColourButton.swift */; };
 		14E244DC2A33C5F2009BCD11 /* FlavourGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E244DB2A33C5F2009BCD11 /* FlavourGrid.swift */; };
 		14E244DE2A381302009BCD11 /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E244DD2A381301009BCD11 /* AddButton.swift */; };
 /* End PBXBuildFile section */
@@ -54,6 +60,12 @@
 		14DD067A2A43BC66007F6D68 /* NewFrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFrameView.swift; sourceTree = "<group>"; };
 		14DD067C2A43BCE4007F6D68 /* FrameDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameDetailView.swift; sourceTree = "<group>"; };
 		14DD067E2A4A129B007F6D68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		14DD067F2A4A214C007F6D68 /* UndoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndoButton.swift; sourceTree = "<group>"; };
+		14DD06812A4A2674007F6D68 /* RedoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedoButton.swift; sourceTree = "<group>"; };
+		14DD06842A4A27C0007F6D68 /* PenButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PenButton.swift; sourceTree = "<group>"; };
+		14DD06862A4A2E9F007F6D68 /* RulerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulerButton.swift; sourceTree = "<group>"; };
+		14DD06882A4A3502007F6D68 /* EraserButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EraserButton.swift; sourceTree = "<group>"; };
+		14DD068A2A4A4F97007F6D68 /* ColourButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourButton.swift; sourceTree = "<group>"; };
 		14E244DB2A33C5F2009BCD11 /* FlavourGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlavourGrid.swift; sourceTree = "<group>"; };
 		14E244DD2A381301009BCD11 /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -133,10 +145,24 @@
 				1452DCB12A3CD30A00EF7D3E /* FlavourDetailView.swift */,
 				14DD067C2A43BCE4007F6D68 /* FrameDetailView.swift */,
 				145000522A3279A5006CB348 /* CanvasView.swift */,
-				14E244DD2A381301009BCD11 /* AddButton.swift */,
+				14DD06832A4A26CB007F6D68 /* Buttons */,
 				1452DCAD2A3C069A00EF7D3E /* ErrorView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		14DD06832A4A26CB007F6D68 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				14E244DD2A381301009BCD11 /* AddButton.swift */,
+				14DD067F2A4A214C007F6D68 /* UndoButton.swift */,
+				14DD06812A4A2674007F6D68 /* RedoButton.swift */,
+				14DD06882A4A3502007F6D68 /* EraserButton.swift */,
+				14DD06842A4A27C0007F6D68 /* PenButton.swift */,
+				14DD068A2A4A4F97007F6D68 /* ColourButton.swift */,
+				14DD06862A4A2E9F007F6D68 /* RulerButton.swift */,
+			);
+			path = Buttons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,22 +237,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				145000472A327942006CB348 /* ContentView.swift in Sources */,
+				14DD06802A4A214C007F6D68 /* UndoButton.swift in Sources */,
 				146795522A43ABBE00C31295 /* DataManager.swift in Sources */,
 				145000452A327942006CB348 /* FlavourFrameApp.swift in Sources */,
 				146795542A43AF9F00C31295 /* Layer.swift in Sources */,
+				14DD06852A4A27C0007F6D68 /* PenButton.swift in Sources */,
 				1452DCA82A3BC54700EF7D3E /* Flavour.swift in Sources */,
 				1452DCB02A3CD25B00EF7D3E /* NewFlavourView.swift in Sources */,
 				145000572A328BA5006CB348 /* DataStore.swift in Sources */,
+				14DD068B2A4A4F97007F6D68 /* ColourButton.swift in Sources */,
 				146795562A43B44A00C31295 /* LayerTile.swift in Sources */,
 				14E244DC2A33C5F2009BCD11 /* FlavourGrid.swift in Sources */,
+				14DD06892A4A3502007F6D68 /* EraserButton.swift in Sources */,
 				14DD067D2A43BCE4007F6D68 /* FrameDetailView.swift in Sources */,
 				1452DCB22A3CD30A00EF7D3E /* FlavourDetailView.swift in Sources */,
 				145000532A3279A5006CB348 /* CanvasView.swift in Sources */,
 				145000552A327AE8006CB348 /* DrawingView.swift in Sources */,
+				14DD06872A4A2E9F007F6D68 /* RulerButton.swift in Sources */,
 				1467954E2A43A02400C31295 /* FrameGrid.swift in Sources */,
 				1452DCAC2A3C062900EF7D3E /* ErrorWrapper.swift in Sources */,
 				14E244DE2A381302009BCD11 /* AddButton.swift in Sources */,
 				1452DCAE2A3C069A00EF7D3E /* ErrorView.swift in Sources */,
+				14DD06822A4A2674007F6D68 /* RedoButton.swift in Sources */,
 				14DD067B2A43BC66007F6D68 /* NewFrameView.swift in Sources */,
 				1467954C2A42609700C31295 /* Frame.swift in Sources */,
 			);

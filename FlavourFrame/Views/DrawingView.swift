@@ -13,6 +13,11 @@ struct DrawingView: View {
     @EnvironmentObject var data: DataManager
     @State private var canvasView = PKCanvasView()
     var layer: any Layer
+    
+    @State var frameInk = PKInkingTool(.pen)
+    @State var flavourInk = PKInkingTool(.marker)
+    let eraser = PKEraserTool(.bitmap, width: 10)
+    @State var isErasing = false
 
     init(layer: any Layer) {
         self.layer = layer
@@ -27,8 +32,22 @@ struct DrawingView: View {
                 if let frame = flavour.frame?.image {
                     Image(uiImage: frame)
                 }
+                CanvasView(canvasView: $canvasView, onSaved: saveDrawing, isErasing: $isErasing, eraser: eraser, ink: flavourInk)
+            } else {
+                CanvasView(canvasView: $canvasView, onSaved: saveDrawing, isErasing: $isErasing, eraser: eraser, ink: frameInk)
             }
-            CanvasView(canvasView: $canvasView, onSaved: saveDrawing)
+        }
+        .toolbar {
+            ToolbarItemGroup(placement: .primaryAction) {
+                RulerButton(isRulerActive: $canvasView.isRulerActive)
+                PenButton(isErasing: $isErasing)
+                EraserButton(isErasing: $isErasing)
+                if layer is Flavour {
+                    ColourButton(inkColor: $flavourInk.color)
+                }
+                UndoButton()
+                RedoButton()
+            }
         }
         .navigationTitle(layer.name)
         .navigationBarTitleDisplayMode(.inline)
@@ -59,7 +78,10 @@ struct DrawingView_Previews: PreviewProvider {
     static let data = DataManager(flavours: Flavour.sampleData, frames: Frame.sampleData)
 
     static var previews: some View {
-        DrawingView(layer: Flavour.sampleData[0])
-            .environmentObject(data)
+        // embedded preview includes toolbar
+        NavigationStack {
+            DrawingView(layer: Frame.sampleData[0])
+                .environmentObject(data)
+        }
     }
 }
