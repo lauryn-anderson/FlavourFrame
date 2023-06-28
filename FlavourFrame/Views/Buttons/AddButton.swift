@@ -9,12 +9,13 @@ import SwiftUI
 
 struct AddButton: View {
     @Binding var isPresentingNewView: Bool
+    @Binding var makingNew: Bool
     var layer: LayerType
-    let thumbnailSize = CGSize(width: 150, height: 150)
 
     var body: some View {
         Button(action: {
             isPresentingNewView = true
+            makingNew = true
         }) {
             switch layer {
             case .flavour:
@@ -29,7 +30,9 @@ struct AddButton: View {
 }
 
 struct AddButton_Previews: PreviewProvider {
+    static let data = DataManager(flavours: Flavour.sampleData, frames: Frame.sampleData)
+
     static var previews: some View {
-        AddButton(isPresentingNewView: .constant(false), layer: .frame)
+        AddButton(isPresentingNewView: .constant(false), makingNew: .constant(true), layer: .frame)
     }
 }

@@ -26,8 +26,11 @@ struct ContentView: View {
     // save action closure provided at instantiation
     let saveAction: () -> Void
     
-    @State private var isPresentingNewFlavourView = false
-    @State private var isPresentingNewFrameView = false
+    @State private var isPresentingEditFlavourView = false
+    @State private var isPresentingEditFrameView = false
+    @State var targetFlavour: Flavour = Flavour.emptyFlavour
+    @State var targetFrame: Frame = Frame.emptyFrame
+    @State var makingNew: Bool = true
 
     var body: some View {
         NavigationSplitView {
@@ -46,20 +49,20 @@ struct ContentView: View {
         } detail: {
             switch selected {
             case .flavour:
-                FlavourGrid(path: $path, isPresentingNewFlavourView: $isPresentingNewFlavourView)
+                FlavourGrid(path: $path, isPresentingEditView: $isPresentingEditFlavourView, targetFlavour: $targetFlavour, makingNew: $makingNew)
 
             case .frame:
-                FrameGrid(path: $path, isPresentingNewFrameView: $isPresentingNewFrameView)
+                FrameGrid(path: $path, isPresentingEditView: $isPresentingEditFrameView, targetFrame: $targetFrame, makingNew: $makingNew)
 
             case .none:
                 Spacer()
             }
         }
-        .sheet(isPresented: $isPresentingNewFlavourView) {
-            NewFlavourView(isPresentingNewFlavourView: $isPresentingNewFlavourView)
+        .sheet(isPresented: $isPresentingEditFlavourView) {
+            FlavourDetailView(flavour: $targetFlavour, makingNew: $makingNew, isPresentingNewFlavourView: $isPresentingEditFlavourView)
         }
-        .sheet(isPresented: $isPresentingNewFrameView) {
-            NewFrameView(isPresentingNewFrameView: $isPresentingNewFrameView)
+        .sheet(isPresented: $isPresentingEditFrameView) {
+            FrameDetailView(frame: $targetFrame, makingNew: $makingNew, isPresentingNewFrameView: $isPresentingEditFrameView)
         }
         // save changes whenever activity pauses
         .onChange(of: scenePhase) { phase in

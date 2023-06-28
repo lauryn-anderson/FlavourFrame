@@ -10,7 +10,9 @@ import SwiftUI
 struct FlavourGrid: View {
     @EnvironmentObject var data: DataManager
     @Binding var path: NavigationPath
-    @Binding var isPresentingNewFlavourView: Bool
+    @Binding var isPresentingEditView: Bool
+    @Binding var targetFlavour: Flavour
+    @Binding var makingNew: Bool
 
     var body: some View {
         NavigationStack(path: $path) {
@@ -18,7 +20,11 @@ struct FlavourGrid: View {
                 LazyVGrid(columns: columns) {
                     ForEach(data.store.flavours) { flavour in
                         NavigationLink(value: flavour) {
-                            LayerTile(layer: flavour)
+                            Menu {
+                                EditFlavourButton(isPresentingEditView: $isPresentingEditView, makingNew: $makingNew, targetFlavour: $targetFlavour, currentFlavour: flavour)
+                            } label: {
+                                LayerTile(layer: flavour)
+                            }
                         }
                     }
                 }
@@ -28,7 +34,7 @@ struct FlavourGrid: View {
                 DrawingView(layer: flavour)
             }
             .toolbar {
-                AddButton(isPresentingNewView: $isPresentingNewFlavourView, layer: .flavour)
+                AddButton(isPresentingNewView: $isPresentingEditView, makingNew: $makingNew, layer: .flavour)
             }
         }
     }
@@ -38,7 +44,7 @@ struct FlavourGrid_Previews: PreviewProvider {
     static let data = DataManager(flavours: Flavour.sampleData, frames: Frame.sampleData)
 
     static var previews: some View {
-        FlavourGrid(path: .constant(NavigationPath()), isPresentingNewFlavourView: .constant(false))
+        FlavourGrid(path: .constant(NavigationPath()), isPresentingEditView: .constant(false), targetFlavour: .constant(data.store.flavours[0]), makingNew: .constant(true))
             .environmentObject(data)
     }
 }
