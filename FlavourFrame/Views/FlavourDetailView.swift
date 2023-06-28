@@ -26,27 +26,17 @@ struct FlavourDetailView: View {
                     }
                     ToolbarItem(placement: .confirmationAction) {
                         Button("Done") {
-                            if makingNew {
-                                addNewFlavour(newFlavour)
-                            } else {
-                                updateFlavour(flavour)
+                            withAnimation {
+                                if makingNew {
+                                    data.store.addNewFlavour(newFlavour)
+                                } else {
+                                    data.store.updateFlavour(flavour)
+                                }
                             }
                             isPresentingNewFlavourView = false
                         }
                     }
                 }
-        }
-    }
-    
-    private func addNewFlavour(_ newFlavour: Flavour) {
-        withAnimation {
-            data.store.flavours.insert(newFlavour, at: 0)
-        }
-    }
-    
-    private func updateFlavour(_ flavour: Flavour) {
-        if let flavourOffset = data.store.flavours.firstIndex(where: {$0.id == flavour.id}) {
-            data.store.flavours[flavourOffset] = flavour
         }
     }
 }

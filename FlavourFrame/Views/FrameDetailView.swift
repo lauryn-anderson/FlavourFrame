@@ -26,10 +26,12 @@ struct FrameDetailView: View {
                     }
                     ToolbarItem(placement: .confirmationAction) {
                         Button("Done") {
-                            if makingNew {
-                                addNewFrame(newFrame)
-                            } else {
-                                updateFrame(frame)
+                            withAnimation {
+                                if makingNew {
+                                    data.store.addNewFrame(newFrame)
+                                } else {
+                                    data.store.updateFrame(frame)
+                                }
                             }
                             isPresentingNewFrameView = false
                         }
@@ -37,19 +39,8 @@ struct FrameDetailView: View {
                 }
         }
     }
-    
-    private func addNewFrame(_ newFrame: Frame) {
-        withAnimation {
-            data.store.frames.insert(newFrame, at: 0)
-        }
-    }
-    
-    private func updateFrame(_ frame: Frame) {
-        if let frameOffset = data.store.frames.firstIndex(where: {$0.id == frame.id}) {
-            data.store.frames[frameOffset] = frame
-        }
-    }
 }
+
 struct FrameDetailForm: View {
     @Binding var frame: Frame
 

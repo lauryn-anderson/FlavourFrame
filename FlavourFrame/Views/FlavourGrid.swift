@@ -22,6 +22,7 @@ struct FlavourGrid: View {
                         NavigationLink(value: flavour) {
                             Menu {
                                 EditFlavourButton(isPresentingEditView: $isPresentingEditView, makingNew: $makingNew, targetFlavour: $targetFlavour, currentFlavour: flavour)
+                                DuplicateButton(currentLayer: flavour)
                             } label: {
                                 LayerTile(layer: flavour)
                             }

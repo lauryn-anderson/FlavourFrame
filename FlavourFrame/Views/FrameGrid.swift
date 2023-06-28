@@ -22,6 +22,7 @@ struct FrameGrid: View {
                         NavigationLink(value: frame) {
                             Menu {
                                 EditFrameButton(isPresentingEditView: $isPresentingEditView, makingNew: $makingNew, targetFrame: $targetFrame, currentFrame: frame)
+                                DuplicateButton(currentLayer: frame)
                             } label: {
                                 LayerTile(layer: frame)
                             }

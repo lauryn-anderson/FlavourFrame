@@ -33,6 +33,7 @@
 		14DD068B2A4A4F97007F6D68 /* ColourButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DD068A2A4A4F97007F6D68 /* ColourButton.swift */; };
 		14DD068D2A4A6471007F6D68 /* EditFlavourButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DD068C2A4A6471007F6D68 /* EditFlavourButton.swift */; };
 		14DD06912A4BB12B007F6D68 /* EditFrameButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DD06902A4BB12B007F6D68 /* EditFrameButton.swift */; };
+		14DD06932A4C9D76007F6D68 /* DuplicateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DD06922A4C9D76007F6D68 /* DuplicateButton.swift */; };
 		14E244DC2A33C5F2009BCD11 /* FlavourGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E244DB2A33C5F2009BCD11 /* FlavourGrid.swift */; };
 		14E244DE2A381302009BCD11 /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E244DD2A381301009BCD11 /* AddButton.swift */; };
 /* End PBXBuildFile section */
@@ -66,6 +67,7 @@
 		14DD068A2A4A4F97007F6D68 /* ColourButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourButton.swift; sourceTree = "<group>"; };
 		14DD068C2A4A6471007F6D68 /* EditFlavourButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFlavourButton.swift; sourceTree = "<group>"; };
 		14DD06902A4BB12B007F6D68 /* EditFrameButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFrameButton.swift; sourceTree = "<group>"; };
+		14DD06922A4C9D76007F6D68 /* DuplicateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicateButton.swift; sourceTree = "<group>"; };
 		14E244DB2A33C5F2009BCD11 /* FlavourGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlavourGrid.swift; sourceTree = "<group>"; };
 		14E244DD2A381301009BCD11 /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -156,6 +158,7 @@
 				14DD068C2A4A6471007F6D68 /* EditFlavourButton.swift */,
 				14DD06902A4BB12B007F6D68 /* EditFrameButton.swift */,
 				14DD067F2A4A214C007F6D68 /* UndoButton.swift */,
+				14DD06922A4C9D76007F6D68 /* DuplicateButton.swift */,
 				14DD06812A4A2674007F6D68 /* RedoButton.swift */,
 				14DD06882A4A3502007F6D68 /* EraserButton.swift */,
 				14DD06842A4A27C0007F6D68 /* PenButton.swift */,
@@ -259,6 +262,7 @@
 				14E244DE2A381302009BCD11 /* AddButton.swift in Sources */,
 				1452DCAE2A3C069A00EF7D3E /* ErrorView.swift in Sources */,
 				14DD06822A4A2674007F6D68 /* RedoButton.swift in Sources */,
+				14DD06932A4C9D76007F6D68 /* DuplicateButton.swift in Sources */,
 				14DD067B2A43BC66007F6D68 /* FrameDetailView.swift in Sources */,
 				1467954C2A42609700C31295 /* Frame.swift in Sources */,
 			);
