@@ -28,9 +28,9 @@ struct FlavourDetailView: View {
                         Button("Done") {
                             withAnimation {
                                 if makingNew {
-                                    data.store.addNewFlavour(newFlavour)
+                                    data.store.addNewLayer(newFlavour)
                                 } else {
-                                    data.store.updateFlavour(flavour)
+                                    data.store.updateLayer(flavour)
                                 }
                             }
                             isPresentingNewFlavourView = false

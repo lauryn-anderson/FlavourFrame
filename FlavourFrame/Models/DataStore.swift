@@ -41,23 +41,23 @@ struct DataStore: Codable {
         }
     }
     
-    mutating func addNewFlavour(_ newFlavour: Flavour) {
-        flavours.insert(newFlavour, at: 0)
-    }
-    
-    mutating func updateFlavour(_ flavour: Flavour) {
-        if let flavourOffset = flavours.firstIndex(where: {$0.id == flavour.id}) {
-            flavours[flavourOffset] = flavour
+    mutating func addNewLayer(_ newLayer: any Layer) {
+        if let newFlavour = newLayer as? Flavour {
+            flavours.insert(newFlavour, at: 0)
+        } else if let newFrame = newLayer as? Frame {
+            frames.insert(newFrame, at: 0)
         }
     }
-
-    mutating func addNewFrame(_ newFrame: Frame) {
-        frames.insert(newFrame, at: 0)
-    }
     
-    mutating func updateFrame(_ frame: Frame) {
-        if let frameOffset = frames.firstIndex(where: {$0.id == frame.id}) {
-            frames[frameOffset] = frame
+    mutating func updateLayer(_ layer: any Layer) {
+        if let flavour = layer as? Flavour {
+            if let flavourOffset = flavours.firstIndex(where: {$0.id == flavour.id}) {
+                flavours[flavourOffset] = flavour
+            }
+        } else if let frame = layer as? Frame {
+            if let frameOffset = frames.firstIndex(where: {$0.id == frame.id}) {
+                frames[frameOffset] = frame
+            }
         }
     }
 }

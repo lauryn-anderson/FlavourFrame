@@ -28,9 +28,9 @@ struct FrameDetailView: View {
                         Button("Done") {
                             withAnimation {
                                 if makingNew {
-                                    data.store.addNewFrame(newFrame)
+                                    data.store.addNewLayer(newFrame)
                                 } else {
-                                    data.store.updateFrame(frame)
+                                    data.store.updateLayer(frame)
                                 }
                             }
                             isPresentingNewFrameView = false

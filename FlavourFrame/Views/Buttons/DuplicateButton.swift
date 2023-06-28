@@ -14,18 +14,18 @@ struct DuplicateButton: View {
     var body: some View {
         Button {
             let newName = "Copy of " + currentLayer.name
+            var newLayer: any Layer = Flavour.emptyFlavour
+            
+            // create new layer from current one
             if let currentFlavour = currentLayer as? Flavour {
-                // create copy of flavour and save it
-                let newFlavour = Flavour(id: UUID(), name: newName, drawing: currentFlavour.drawing, frame: currentFlavour.frame)
-                withAnimation {
-                    data.store.addNewFlavour(newFlavour)
-                }
+                newLayer = Flavour(id: UUID(), name: newName, drawing: currentFlavour.drawing, frame: currentFlavour.frame)
             } else if let currentFrame = currentLayer as? Frame {
-                // create copy of frame and save it
-                let newFrame = Frame(id: UUID(), name: newName, drawing: currentFrame.drawing)
-                withAnimation {
-                    data.store.addNewFrame(newFrame)
-                }
+                newLayer = Frame(id: UUID(), name: newName, drawing: currentFrame.drawing)
+            }
+            
+            // save new layer to data
+            withAnimation {
+                data.store.addNewLayer(newLayer)
             }
         } label: {
             Text("Duplicate")
