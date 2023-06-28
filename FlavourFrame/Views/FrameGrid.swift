@@ -10,7 +10,9 @@ import SwiftUI
 struct FrameGrid: View {
     @EnvironmentObject var data: DataManager
     @Binding var path: NavigationPath
-    @Binding var isPresentingNewFrameView: Bool
+    @Binding var isPresentingEditView: Bool
+    @Binding var targetFrame: Frame
+    @Binding var makingNew: Bool
 
     var body: some View {
         NavigationStack(path: $path) {
@@ -18,7 +20,13 @@ struct FrameGrid: View {
                 LazyVGrid(columns: columns) {
                     ForEach(data.store.frames) { frame in
                         NavigationLink(value: frame) {
-                            LayerTile(layer: frame)
+                            Menu {
+                                EditFrameButton(isPresentingEditView: $isPresentingEditView, makingNew: $makingNew, targetFrame: $targetFrame, currentFrame: frame)
+                                DuplicateButton(currentLayer: frame)
+                                DeleteButton(currentLayer: frame)
+                            } label: {
+                                LayerTile(layer: frame)
+                            }
                         }
                     }
                 }
@@ -28,7 +36,7 @@ struct FrameGrid: View {
                 DrawingView(layer: frame)
             }
             .toolbar {
-                AddButton(isPresentingNewView: $isPresentingNewFrameView, layer: .frame)
+                AddButton(isPresentingNewView: $isPresentingEditView, makingNew: $makingNew, layer: .frame)
             }
         }
     }
@@ -38,7 +46,7 @@ struct FrameGrid_Previews: PreviewProvider {
     static let data = DataManager(flavours: Flavour.sampleData, frames: Frame.sampleData)
 
     static var previews: some View {
-        FrameGrid(path: .constant(NavigationPath()), isPresentingNewFrameView: .constant(false))
+        FrameGrid(path: .constant(NavigationPath()), isPresentingEditView: .constant(false), targetFrame: .constant(data.store.frames[0]), makingNew: .constant(true))
             .environmentObject(data)
     }
 }

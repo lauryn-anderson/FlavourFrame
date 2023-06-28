@@ -14,7 +14,7 @@ struct Flavour: Layer {
     var id: UUID
     var name: String
     var drawing: PKDrawing?
-    var frame: Frame?
+    var frame: UUID?
     
     init() {
         self.id = UUID()
@@ -23,7 +23,7 @@ struct Flavour: Layer {
         self.frame = nil
     }
     
-    init(id: UUID, name: String, drawing: PKDrawing?, frame: Frame?) {
+    init(id: UUID, name: String, drawing: PKDrawing?, frame: UUID?) {
         self.id = id
         self.name = name
         self.drawing = drawing

@@ -24,6 +24,17 @@ struct DataStore: Codable {
         self.flavours = flavours
         self.frames = frames
     }
+    
+    func getFrame(_ id: UUID?) -> Frame? {
+        if id != nil {
+            for frame in frames {
+                if frame.id == id {
+                    return frame
+                }
+            }
+        }
+        return nil
+    }
 
     mutating func assignDrawing(_ drawing: PKDrawing, to layer: any Layer) {
         if let flavour = layer as? Flavour {
@@ -38,6 +49,52 @@ struct DataStore: Codable {
             var frame = frames[index]
             frame.assignDrawing(drawing)
             frames[index] = frame
+        }
+    }
+    
+    mutating func addNewLayer(_ newLayer: any Layer) {
+        if let newFlavour = newLayer as? Flavour {
+            flavours.insert(newFlavour, at: 0)
+        } else if let newFrame = newLayer as? Frame {
+            frames.insert(newFrame, at: 0)
+        }
+    }
+    
+    mutating func updateLayer(_ layer: any Layer) {
+        if let flavour = layer as? Flavour {
+            if let flavourOffset = flavours.firstIndex(where: {$0.id == flavour.id}) {
+                flavours[flavourOffset] = flavour
+            }
+        } else if let frame = layer as? Frame {
+            if let frameOffset = frames.firstIndex(where: {$0.id == frame.id}) {
+                frames[frameOffset] = frame
+            }
+        }
+    }
+    
+    mutating func deleteLayer(_ layer: any Layer) {
+        if let flavour = layer as? Flavour {
+            if let flavourOffset = flavours.firstIndex(where: {$0.id == flavour.id}) {
+                flavours.remove(at: flavourOffset)
+            }
+        } else if let frame = layer as? Frame {
+            let deletedID = frame.id
+            if let frameOffset = frames.firstIndex(where: {$0.id == deletedID}) {
+                frames.remove(at: frameOffset)
+            }
+            
+            // data integrity will be compromised if flavours reference frames
+            // that no longer exist, so go through set of flavours and set any
+            // such references to nil.
+            // NOTE: if this project gets much bigger, it would probably be wise
+            // to use an actual database system, but this should do for now.
+            for var flavour in flavours {
+                if let id = flavour.frame {
+                    if id == deletedID {
+                        flavour.frame = nil
+                    }
+                }
+            }
         }
     }
 }
