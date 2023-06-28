@@ -23,6 +23,7 @@ struct FlavourGrid: View {
                             Menu {
                                 EditFlavourButton(isPresentingEditView: $isPresentingEditView, makingNew: $makingNew, targetFlavour: $targetFlavour, currentFlavour: flavour)
                                 DuplicateButton(currentLayer: flavour)
+                                DeleteButton(currentLayer: flavour)
                             } label: {
                                 LayerTile(layer: flavour)
                             }

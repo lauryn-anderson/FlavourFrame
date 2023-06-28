@@ -23,6 +23,7 @@ struct FrameGrid: View {
                             Menu {
                                 EditFrameButton(isPresentingEditView: $isPresentingEditView, makingNew: $makingNew, targetFrame: $targetFrame, currentFrame: frame)
                                 DuplicateButton(currentLayer: frame)
+                                DeleteButton(currentLayer: frame)
                             } label: {
                                 LayerTile(layer: frame)
                             }

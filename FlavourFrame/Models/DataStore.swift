@@ -60,4 +60,30 @@ struct DataStore: Codable {
             }
         }
     }
+    
+    mutating func deleteLayer(_ layer: any Layer) {
+        if let flavour = layer as? Flavour {
+            if let flavourOffset = flavours.firstIndex(where: {$0.id == flavour.id}) {
+                flavours.remove(at: flavourOffset)
+            }
+        } else if let frame = layer as? Frame {
+            let deletedID = frame.id
+            if let frameOffset = frames.firstIndex(where: {$0.id == deletedID}) {
+                frames.remove(at: frameOffset)
+            }
+            
+            // data integrity will be compromised if flavours reference frames
+            // that no longer exist, so go through set of flavours and set any
+            // such references to nil.
+            // NOTE: if this project gets much bigger, it would probably be wise
+            // to use an actual database system, but this should do for now.
+            for var flavour in flavours {
+                if let id = flavour.frame?.id {
+                    if id == deletedID {
+                        flavour.frame = nil
+                    }
+                }
+            }
+        }
+    }
 }
