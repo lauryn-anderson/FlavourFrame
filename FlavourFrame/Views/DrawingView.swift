@@ -29,8 +29,8 @@ struct DrawingView: View {
     var body: some View {
         ZStack {
             if let flavour = layer as? Flavour {
-                if let frame = flavour.frame?.image {
-                    Image(uiImage: frame)
+                if let frame = data.store.getFrame(flavour.frame) {
+                    Image(uiImage: frame.image)
                 }
                 CanvasView(canvasView: $canvasView, onSaved: saveDrawing, isErasing: $isErasing, eraser: eraser, ink: flavourInk)
             } else {

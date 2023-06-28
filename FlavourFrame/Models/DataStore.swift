@@ -24,6 +24,17 @@ struct DataStore: Codable {
         self.flavours = flavours
         self.frames = frames
     }
+    
+    func getFrame(_ id: UUID?) -> Frame? {
+        if id != nil {
+            for frame in frames {
+                if frame.id == id {
+                    return frame
+                }
+            }
+        }
+        return nil
+    }
 
     mutating func assignDrawing(_ drawing: PKDrawing, to layer: any Layer) {
         if let flavour = layer as? Flavour {
@@ -78,7 +89,7 @@ struct DataStore: Codable {
             // NOTE: if this project gets much bigger, it would probably be wise
             // to use an actual database system, but this should do for now.
             for var flavour in flavours {
-                if let id = flavour.frame?.id {
+                if let id = flavour.frame {
                     if id == deletedID {
                         flavour.frame = nil
                     }

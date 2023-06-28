@@ -50,9 +50,9 @@ struct FlavourDetailForm: View {
             List {
                 TextField("Name", text: $flavour.name)
                 Picker(selection: $flavour.frame) {
-                    Text("None").tag(nil as Frame?)
+                    Text("None").tag(nil as UUID?)
                     ForEach(data.store.frames, id: \.self) { frame in
-                        Text(frame.name).tag(frame as Frame?)
+                        Text(frame.name).tag(frame.id as UUID?)
                     }
                 } label: {
                     Text("Frame")
