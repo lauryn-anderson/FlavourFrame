@@ -36,6 +36,7 @@ struct DrawingView: View {
             } else {
                 CanvasView(canvasView: $canvasView, onSaved: saveDrawing, isErasing: $isErasing, eraser: eraser, ink: frameInk)
             }
+            TextView()
         }
         .toolbar {
             ToolbarItemGroup(placement: .primaryAction) {
