@@ -52,6 +52,15 @@ struct DataStore: Codable {
         }
     }
     
+    mutating func assignWords(_ words: [Word], to flavourID: UUID) {
+        guard let index = flavours.firstIndex(where: { target in
+            target.id == flavourID
+        }) else { return }
+        var newFlavour = flavours[index]
+        newFlavour.assignWords(words)
+        flavours[index] = newFlavour
+    }
+    
     mutating func addNewLayer(_ newLayer: any Layer) {
         if let newFlavour = newLayer as? Flavour {
             flavours.insert(newFlavour, at: 0)

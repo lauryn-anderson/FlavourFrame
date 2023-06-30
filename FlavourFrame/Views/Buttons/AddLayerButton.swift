@@ -1,5 +1,5 @@
 //
-//  AddButton.swift
+//  AddLayerButton.swift
 //  FlavourFrame
 //
 //  Created by Lauryn Anderson on 2023-06-12.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AddButton: View {
+struct AddLayerButton: View {
     @Binding var isPresentingNewView: Bool
     @Binding var makingNew: Bool
     var layer: LayerType
@@ -33,6 +33,6 @@ struct AddButton_Previews: PreviewProvider {
     static let data = DataManager(flavours: Flavour.sampleData, frames: Frame.sampleData)
 
     static var previews: some View {
-        AddButton(isPresentingNewView: .constant(false), makingNew: .constant(true), layer: .frame)
+        AddLayerButton(isPresentingNewView: .constant(false), makingNew: .constant(true), layer: .frame)
     }
 }

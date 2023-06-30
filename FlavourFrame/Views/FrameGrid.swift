@@ -36,7 +36,7 @@ struct FrameGrid: View {
                 DrawingView(layer: frame)
             }
             .toolbar {
-                AddButton(isPresentingNewView: $isPresentingEditView, makingNew: $makingNew, layer: .frame)
+                AddLayerButton(isPresentingNewView: $isPresentingEditView, makingNew: $makingNew, layer: .frame)
             }
         }
     }
