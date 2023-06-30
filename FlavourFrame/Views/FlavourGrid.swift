@@ -36,7 +36,7 @@ struct FlavourGrid: View {
                 DrawingView(layer: flavour)
             }
             .toolbar {
-                AddButton(isPresentingNewView: $isPresentingEditView, makingNew: $makingNew, layer: .flavour)
+                AddLayerButton(isPresentingNewView: $isPresentingEditView, makingNew: $makingNew, layer: .flavour)
             }
         }
     }

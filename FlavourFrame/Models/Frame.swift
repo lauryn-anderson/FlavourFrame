@@ -14,14 +14,8 @@ struct Frame: Layer {
     var id = UUID()
     var name = "New Frame"
     var drawing: PKDrawing?
-    
-    init() {
-        self.id = UUID()
-        self.name = "New Frame"
-        self.drawing = nil
-    }
-    
-    init(id: UUID, name: String, drawing: PKDrawing?) {
+        
+    init(id: UUID = UUID(), name: String = "New Frame", drawing: PKDrawing? = nil) {
         self.id = id
         self.name = name
         self.drawing = drawing
@@ -34,7 +28,7 @@ struct Frame: Layer {
 
 extension Frame {
     static let sampleData: [Frame] = [
-        Frame(id: UUID(), name: "Blank", drawing: nil),
-        Frame(id: UUID(), name: "Also Blank", drawing: nil),
+        Frame(name: "Blank"),
+        Frame(name: "Also Blank"),
     ]
 }

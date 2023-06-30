@@ -15,30 +15,29 @@ struct Flavour: Layer {
     var name: String
     var drawing: PKDrawing?
     var frame: UUID?
+    var words: [Word]
     
-    init() {
-        self.id = UUID()
-        self.name = "New Flavour"
-        self.drawing = nil
-        self.frame = nil
-    }
-    
-    init(id: UUID, name: String, drawing: PKDrawing?, frame: UUID?) {
+    init(id: UUID = UUID(), name: String = "New Flavour", drawing: PKDrawing? = nil, frame: UUID? = nil, words: [Word] = []) {
         self.id = id
         self.name = name
         self.drawing = drawing
         self.frame = frame
+        self.words = words
     }
     
     static var emptyFlavour: Flavour {
         Flavour()
     }
+    
+    mutating func assignWords(_ words: [Word]) {
+        self.words = words
+    }
 }
 
 extension Flavour {
     static let sampleData: [Flavour] = [
-        Flavour(id: UUID(), name: "Peppermint Tea", drawing: nil, frame: nil),
-        Flavour(id: UUID(), name: "Honey Lemon Tea", drawing: nil, frame: nil),
-        Flavour(id: UUID(), name: "Chamomile Tea", drawing: nil, frame: nil),
+        Flavour(name: "Peppermint Tea", words: [Word()]),
+        Flavour(name: "Honey Lemon Tea"),
+        Flavour(name: "Chamomile Tea"),
     ]
 }

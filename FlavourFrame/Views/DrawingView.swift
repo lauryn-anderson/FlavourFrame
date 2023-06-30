@@ -12,6 +12,7 @@ import PencilKit
 struct DrawingView: View {
     @EnvironmentObject var data: DataManager
     @State private var canvasView = PKCanvasView()
+    @State private var words: [Word] = []
     var layer: any Layer
     
     @State var frameInk = PKInkingTool(.pen)
@@ -21,8 +22,15 @@ struct DrawingView: View {
 
     init(layer: any Layer) {
         self.layer = layer
+        
+        // restore drawing if it exists
         if let drawing = layer.drawing {
             self.canvasView.drawing = drawing
+        }
+        
+        // restore words if they exist
+        if let flavour = layer as? Flavour {
+            _words = State(initialValue: flavour.words)
         }
     }
 
@@ -33,6 +41,11 @@ struct DrawingView: View {
                     Image(uiImage: frame.image)
                 }
                 CanvasView(canvasView: $canvasView, onSaved: saveDrawing, isErasing: $isErasing, eraser: eraser, ink: flavourInk)
+                Group {
+                    ForEach($words) { $word in
+                        TextView(text: $word.text, totalOffset: $word.offset, save: saveWords)
+                    }
+                }
             } else {
                 CanvasView(canvasView: $canvasView, onSaved: saveDrawing, isErasing: $isErasing, eraser: eraser, ink: frameInk)
             }
@@ -47,6 +60,9 @@ struct DrawingView: View {
                 }
                 UndoButton()
                 RedoButton()
+                if layer is Flavour {
+                    AddWordButton(words: $words)
+                }
             }
         }
         .navigationTitle(layer.name)
@@ -54,23 +70,15 @@ struct DrawingView: View {
     }
     
     func saveDrawing() {
-        guard let selectedLayer else { return }
-        data.store.assignDrawing(canvasView.drawing, to: selectedLayer)
+        data.store.assignDrawing(canvasView.drawing, to: layer)
+        // difficult to save words enough, so add it here too
+        saveWords()
     }
     
-    func restoreDrawing() {
-        if let drawing = layer.drawing {
-            canvasView.drawing = drawing
-        }
-    }
-
-    private var selectedLayer: (any Layer)? {
+    func saveWords() {
         if let flavour = layer as? Flavour {
-            return data.store.flavours.first { $0.id == flavour.id }
-        } else if let frame = layer as? Frame {
-            return data.store.frames.first { $0.id == frame.id }
+            data.store.assignWords(words, to: flavour.id)
         }
-        return nil
     }
 }
 
@@ -80,7 +88,7 @@ struct DrawingView_Previews: PreviewProvider {
     static var previews: some View {
         // embedded preview includes toolbar
         NavigationStack {
-            DrawingView(layer: Frame.sampleData[0])
+            DrawingView(layer: Flavour.sampleData[0])
                 .environmentObject(data)
         }
     }
