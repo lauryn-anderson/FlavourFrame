@@ -70,7 +70,7 @@ struct DrawingView: View {
     }
     
     func saveDrawing() {
-        data.store.assignDrawing(canvasView.drawing, to: layer)
+        data.store.assignDrawing(canvasView.drawing, to: layer.id)
         // difficult to save words enough, so add it here too
         saveWords()
     }
